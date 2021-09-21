@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
+
+body {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  margin: 0;
+}
+
+.container {
+  width: 100vw;
+}
+
+.input-container {
+  margin-top: 5vh;
+}
+
+input {
+  font-size: 18px;
+  padding: 10px;
+  border: solid black 2px;
+  outline: none;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+button {
+  font-size: 18px;
+  margin-left: -5px;
+  padding: 10px;
+  background-color: #2b4eff;
+  color: #fff;
+  border: solid black 2px;
+  border-left: none;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.weather-forecast {
+  padding: 10.5vh 0 35vh;
+}
+
+.weather-img {
+  object-fit: cover;
+  width: 10%;
+  height: auto;
+}
+
+.weather-condition {
+  margin-bottom: 5px;
+}
+
+.temperature {
+  font-size: 40px;
+  margin-top: 0;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+  width: 100%;
+}
+
+ul > li:nth-child(odd) {
+  background-color: #2b4eff;
+  color: white;
+}
+
+.list-item {
+  width: 100%;
+  padding: 20vh 0;
+}
