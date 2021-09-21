@@ -22,6 +22,7 @@ input {
   padding: 10px;
   border: solid black 2px;
   outline: none;
+  border-right: none;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   border-top-left-radius: 5px;
@@ -51,7 +52,7 @@ button {
 }
 
 .weather-forecast {
-  padding: 10.5vh 0 35vh;
+  padding: 12vh 0 37vh;
 }
 
 .weather-img {
