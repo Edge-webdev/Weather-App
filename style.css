@@ -35,9 +35,19 @@ button {
   background-color: #2b4eff;
   color: #fff;
   border: solid black 2px;
+}
+
+.search {
   border-left: none;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+}
+
+.clear {
+  background-color: #fff;
+  color: black;
+  margin-left: 10px;
+  border-radius: 5px
 }
 
 .weather-forecast {
