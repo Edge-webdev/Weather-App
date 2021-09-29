@@ -2,6 +2,7 @@
 =======
 // TODO: Document Code
 
+// DOM elements
 const forecastContainer = document.querySelector('.container');
 const clearButton = document.querySelector('.clear');
 >>>>>>> 83f3df0 (Added geolocation finding)
@@ -16,6 +17,7 @@ const humidityDisplay = document.querySelector('.humidity');
 const visibilityDisplay = document.querySelector('.visibility');
 const precipitation = document.querySelector('.precipitation');
 
+// API data
 var APIdata = {
     key: "815173988628159d2cf27189bb8b38b0",
     units: "metric"
@@ -23,24 +25,23 @@ var APIdata = {
 
 submit.addEventListener("click", fetchWeather);
 input.addEventListener("keyup", (e) => {
-    if (e.key == 'Enter') {
-        fetchWeather();
-    }
+    if (e.key == 'Enter') fetchWeather();
 })
 window.addEventListener("load", function () {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position) => {
             getLocationWeather(position.coords.latitude, position.coords.longitude)
         });
-    } else {
-        console.error("Unable to find location");
     }
+    else console.error("Unable to find location");
 });
 
+// Gets weather at location given by geolocation
 async function getLocationWeather(lat, lon) {
     let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIdata.key}&units=${APIdata.units}`);
     let data = await response.json();
 
+    // Gets the properties of data and formats them
     let { name, visibility, rain } = data;
     let { country } = data.sys;
     let { icon, description } = data.weather[0];
@@ -51,7 +52,7 @@ async function getLocationWeather(lat, lon) {
     temp = Math.round(temp);
     visibility = Math.round(visibility / 1000);
 
-
+    // Renders data on the web page
     title.innerText = `The weather in ${name}, ${country} today is`;
     weatherIcon.src = `https://openweathermap.org/img/wn/${icon}@4x.png`;
     weatherCondition.innerText = `${description}`;
@@ -62,6 +63,7 @@ async function getLocationWeather(lat, lon) {
     precipitation.innerText = `${rain ? rain["1h"] : 0.0} mm`
 }
 
+// Basically the same as getLocationWeather() but takes in user input as a query
 async function fetchWeather() {
     var city = input.value;
     let res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIdata.key}&units=${APIdata.units}`);
@@ -89,7 +91,14 @@ async function fetchWeather() {
     precipitation.innerText = `${rain ? rain["1h"] : 0.0} mm`
 }
 
+// Formats string
 function formatString(string) {
-    if (typeof string == "string") return string[0].toUpperCase() + string.slice(1);
+    if (typeof string == "string") {
+        var output = string.split(" ")
+        for (var i = 0; i < output.length; i++) {
+            output[i] = output[i][0].toUpperCase() + output[i].slice(1);
+        }
+        return output.join(' ');
+    }
     else return;
 }
